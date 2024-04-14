@@ -1,5 +1,12 @@
-# Login-system
-To run this projrect  
-[Fork this file]
-run this command in your terminal 
-        **npm i**
+# Login-system  
+
+### To Install Dependencies
+
+```bash
+  npm i 
+```
+### To Run This Project
+
+```bash
+  nodemon app.js
+```
