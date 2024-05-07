@@ -1,26 +1,28 @@
-const { name } = require("ejs");
-const mongoose = require ("mongoose");
-const connect = mongoose.connect();
+const mongoose = require("mongoose");
 
-connect.then(() => {
-    console.log("Database is connected succesfully");
+// Establish database connection
+mongoose.connect("mongodb://localhost:27017/myDatabase", { useNewUrlParser: true, useUnifiedTopology: true })
+    .then(() => {
+        console.log("Database connected successfully");
+    })
+    .catch((error) => {
+        console.error("Database connection error:", error);
+    });
 
-})
-.catch(() => {
-    console.log("Database is not connected");
-});
-
-const LoginSchema = new mongoose.Schema({
+// Define schema for the "Login" collection
+const loginSchema = new mongoose.Schema({
     name: {
         type: String,
         required: true
     },
-    password:{
+    password: {
         type: String,
         required: true
     }
 });
 
-const collection = new mongoose.model("users", LoginSchema);
+// Create model based on the schema
+const Login = mongoose.model("Login", loginSchema);
 
-module.exports = collection;
+// Export the model
+module.exports = Login;
